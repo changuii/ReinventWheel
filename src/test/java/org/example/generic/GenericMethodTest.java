@@ -38,4 +38,17 @@ public class GenericMethodTest {
         // note : 컴파일 에러 발생
 //        SimpleList.sum(objectSimpleArrayList)
     }
+
+    @DisplayName("filter ")
+    @Test
+    void filter() {
+        final SimpleList<Double> doubleValues = new SimpleArrayList<>(-0.1, 0.5, 0.7);
+        final SimpleList<Integer> intValues = new SimpleArrayList<>(-10, 1, 2);
+
+        final SimpleList<Double> filteredDoubleValues = SimpleList.filterNegative(doubleValues);
+        final SimpleList<Integer> filteredIntValues = SimpleList.filterNegative(intValues);
+
+        assertThat(filteredDoubleValues.contains(-0.1)).isFalse();
+        assertThat(filteredIntValues.contains(-10)).isFalse();
+    }
 }
