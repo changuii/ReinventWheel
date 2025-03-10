@@ -24,7 +24,9 @@ public interface SimpleList<T> {
         return filteredList;
     }
 
-    static <T> void copy(SimpleList<? extends T> origin, SimpleList<T> target) {
+    // PECS, 생산자는 extends, 소비자는 super
+    // 생산자는 조회 기능만 사용, 소비자는 쓰기 작업만 가능
+    static <T> void copy(SimpleList<? extends T> origin, SimpleList<? super T> target) {
         target.clear();
         for (int i = 0; i < origin.size(); i++) {
             target.add(origin.get(i));
