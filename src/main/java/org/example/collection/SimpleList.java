@@ -2,9 +2,18 @@ package org.example.collection;
 
 public interface SimpleList<T> {
 
-    public static <T> SimpleArrayList<T> fromArrayToList(Object... values){
+    static <T> SimpleArrayList<T> fromArrayToList(Object... values) {
         return new SimpleArrayList<>(values);
     }
+
+    static <T extends Number> double sum(SimpleList<T> simpleList) {
+        Double sum = 0D;
+        for (int i = 0; i < simpleList.size(); i++) {
+            sum += simpleList.get(i).doubleValue();
+        }
+        return sum;
+    }
+
 
     boolean add(T value);
 

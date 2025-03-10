@@ -20,4 +20,22 @@ public class GenericMethodTest {
         assertThat(stringSimpleArrayList.get(1)).isEqualTo("second");
         assertThat(stringSimpleArrayList.size()).isEqualTo(2);
     }
+
+    @DisplayName("sum")
+    @Test
+    void sum() {
+        final SimpleList<Double> doubleValues = new SimpleArrayList<>(0.5, 0.7);
+        final SimpleList<Integer> intValues = new SimpleArrayList<>(1, 2);
+
+        assertThat(SimpleList.sum(doubleValues)).isEqualTo(1.2);
+        assertThat(SimpleList.sum(intValues)).isEqualTo(3);
+    }
+
+    @DisplayName("string sum")
+    @Test
+    void sums() {
+        final SimpleArrayList<String> objectSimpleArrayList = new SimpleArrayList<>("asd", "asdsd");
+        // note : 컴파일 에러 발생
+//        SimpleList.sum(objectSimpleArrayList)
+    }
 }
