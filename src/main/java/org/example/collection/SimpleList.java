@@ -14,14 +14,21 @@ public interface SimpleList<T> {
         return sum;
     }
 
-    static <T extends Number> SimpleList<T> filterNegative(SimpleList<T> simpleList){
+    static <T extends Number> SimpleList<T> filterNegative(SimpleList<T> simpleList) {
         final SimpleArrayList<T> filteredList = new SimpleArrayList<>();
-        for(int i=0; i< filteredList.size(); i++){
-            if(simpleList.get(i).doubleValue() >= 0){
+        for (int i = 0; i < filteredList.size(); i++) {
+            if (simpleList.get(i).doubleValue() >= 0) {
                 filteredList.add(simpleList.get(i));
             }
         }
         return filteredList;
+    }
+
+    static <T> void copy(SimpleList<? extends T> origin, SimpleList<T> target) {
+        target.clear();
+        for (int i = 0; i < origin.size(); i++) {
+            target.add(origin.get(i));
+        }
     }
 
 

@@ -4,6 +4,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import org.example.collection.SimpleArrayList;
 import org.example.collection.SimpleList;
+import org.example.printer.LaserPrinter;
+import org.example.printer.Printer;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -50,5 +52,18 @@ public class GenericMethodTest {
 
         assertThat(filteredDoubleValues.contains(-0.1)).isFalse();
         assertThat(filteredIntValues.contains(-10)).isFalse();
+    }
+
+    @DisplayName("copy")
+    @Test
+    void copy() {
+        final var laserPrinter = new LaserPrinter();
+
+        final SimpleList<Printer> printers = new SimpleArrayList<>();
+        final SimpleList<LaserPrinter> laserPrinters = new SimpleArrayList<>(laserPrinter);
+
+        SimpleList.copy(laserPrinters, printers);
+
+        assertThat(printers.get(0) == laserPrinter).isTrue();
     }
 }
