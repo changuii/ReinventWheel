@@ -2,6 +2,10 @@ package org.example.collection;
 
 public interface SimpleList<T> {
 
+    public static <T> SimpleArrayList<T> fromArrayToList(Object... values){
+        return new SimpleArrayList<>(values);
+    }
+
     boolean add(T value);
 
     void add(int index, T value);

@@ -14,6 +14,12 @@ public class SimpleArrayList<T> implements SimpleList<T> {
         this.data = new Object[size];
     }
 
+    public SimpleArrayList(Object... objects) {
+        this.data = objects;
+        this.size = data.length + 1;
+        this.currentIndex = data.length;
+    }
+
     @Override
     public boolean add(final T value) {
         data[currentIndex] = value;
