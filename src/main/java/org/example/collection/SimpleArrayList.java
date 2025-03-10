@@ -2,20 +2,20 @@ package org.example.collection;
 
 import java.util.Arrays;
 
-public class SimpleArrayList implements SimpleList {
+public class SimpleArrayList<T> implements SimpleList<T> {
 
-    private String[] data;
+    private Object[] data;
     private int currentIndex;
     private int size;
 
     public SimpleArrayList() {
         this.size = 1;
         this.currentIndex = 0;
-        this.data = new String[size];
+        this.data = new Object[size];
     }
 
     @Override
-    public boolean add(final String value) {
+    public boolean add(final T value) {
         data[currentIndex] = value;
 
         currentIndex++;
@@ -31,7 +31,7 @@ public class SimpleArrayList implements SimpleList {
     }
 
     @Override
-    public void add(final int index, final String value) {
+    public void add(final int index, final T value) {
         if (currentIndex <= index) {
             throw new IndexOutOfBoundsException();
         }
@@ -49,25 +49,25 @@ public class SimpleArrayList implements SimpleList {
     }
 
     @Override
-    public String set(final int index, final String value) {
+    public T set(final int index, final T value) {
         if (currentIndex < index) {
             throw new IndexOutOfBoundsException();
         }
-        final String prevData = data[index];
+        final T prevData = elementData(data[index]);;
         data[index] = value;
         return prevData;
     }
 
     @Override
-    public String get(final int index) {
+    public T get(final int index) {
         if (currentIndex < index) {
             throw new IndexOutOfBoundsException();
         }
-        return data[index];
+        return elementData(data[index]);
     }
 
     @Override
-    public boolean contains(final String value) {
+    public boolean contains(final T value) {
         return Arrays.stream(data)
                 .filter(d -> value.equals(d))
                 .findAny()
@@ -75,7 +75,7 @@ public class SimpleArrayList implements SimpleList {
     }
 
     @Override
-    public int indexOf(final String value) {
+    public int indexOf(final T value) {
         for (int i = 0; i < currentIndex; i++) {
             if (data[i].equals(value)) {
                 return i;
@@ -95,7 +95,7 @@ public class SimpleArrayList implements SimpleList {
     }
 
     @Override
-    public boolean remove(final String value) {
+    public boolean remove(final T value) {
         final int valueIndex = indexOf(value);
 
         if (valueIndex == -1) {
@@ -120,12 +120,12 @@ public class SimpleArrayList implements SimpleList {
     }
 
     @Override
-    public String remove(final int index) {
+    public T remove(final int index) {
         if (currentIndex <= index) {
             throw new IndexOutOfBoundsException();
         }
 
-        final String prevData = data[index];
+        final T prevData = elementData(data[index]);
 
         for (int i = index; i < currentIndex; i++) {
             data[i] = data[i + 1];
@@ -143,6 +143,10 @@ public class SimpleArrayList implements SimpleList {
     public void clear() {
         currentIndex = 0;
         size = 1;
-        data = new String[size];
+        data = new Object[size];
+    }
+
+    private T elementData(final Object o){
+        return (T) o;
     }
 }
