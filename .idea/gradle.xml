@@ -4,12 +4,15 @@
   <component name="GradleSettings">
     <option name="linkedExternalProjectsSettings">
       <GradleProjectSettings>
-        <option name="delegatedBuild" value="false" />
-        <option name="testRunner" value="PLATFORM" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="gradleJvm" value="corretto-17" />
         <option name="modules">
           <set>
-            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/../../우아한 테크코스/ReinventWheel" />
+            <option value="$PROJECT_DIR$/../../우아한 테크코스/ReinventWheel/ReinventWheel" />
+            <option value="$PROJECT_DIR$/../../우아한 테크코스/ReinventWheel/module1" />
+            <option value="$PROJECT_DIR$/../../우아한 테크코스/ReinventWheel/module2" />
+            <option value="$PROJECT_DIR$/../../우아한 테크코스/ReinventWheel/module3" />
           </set>
         </option>
       </GradleProjectSettings>

@@ -1,0 +1,25 @@
+plugins {
+    id 'java'
+    // api configuration 사용하기 위해 필요한 플러그인
+    id 'java-library'
+}
+
+group = 'org.example'
+version = ''
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+//    implementation(':main');
+//    api project(':module2');
+//    compileOnlyApi project(':module3');
+
+    testImplementation platform('org.junit:junit-bom:5.10.0')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+}
+
+test {
+    useJUnitPlatform()
+}
